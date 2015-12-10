@@ -215,9 +215,9 @@ startScript $publisher_outfile_name "Publisher"
 addPublishers $publisher_outfile_name
 endScript $publisher_outfile_name
 
-nohup $jmeterBinary -n -t $subscriber_outfile_name > /tmp/test_subscriber_result.txt &
+nohup $jmeterBinary -n -t $subscriber_outfile_name > $subscriber_result_outfile_name &
 sleep 10
-nohup $jmeterBinary -n -t $publisher_outfile_name > /tmp/test_publisher_result.txt &
+nohup $jmeterBinary -n -t $publisher_outfile_name > $publisher_result_outfile_name &
 
 echo -e "\nJmeter Log output ...\n"
-tail -f /tmp/test_subscriber_result.txt -f /tmp/test_publisher_result.txt
+tail -f $subscriber_result_outfile_name -f $publisher_result_outfile_name
